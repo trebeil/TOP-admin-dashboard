@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root {
+  --nav-size  : 1rem;
+  --simple-space: 15px;
+  --double-space: calc(var(--simple-space) * 2);
+  --triple-space: calc(var(--simple-space) * 3);
+  --blue: #3b82f6;
+  --white: whitesmoke;
+  --orange: #fbbf24;
+  --gray: #e2e8f0;
+  --dark-gray: #334155;
+  --black: black;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  /* outline: auto; */
+}
+
+p {
+  margin: 0;
+}
+
+nav > svg,
+header svg {
+  width: var(--nav-size);
+  height: var(--nav-size);
+  justify-self: center;
+}
+
+nav > svg:first-child {
+  width: calc(var(--nav-size)*2);
+  height: calc(var(--nav-size)*2);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "nav header"
+    "nav main"
+    "nav footer";
+  grid-template-columns: 15rem auto;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  background-color: var(--white);
+  color: var(--black);
+  padding: var(--simple-space) var(--triple-space);
+  grid-area: header;
+  display: grid;
+  gap: var(--simple-space);
+  box-shadow: 0 10px 20px -20px;
+  position: relative;
+  z-index: 1;
+}
+
+header > div:nth-child(1) {
+  display: grid;
+  grid-template-columns: auto 5fr 1fr auto auto auto;
+  align-items: center;
+  gap: var(--double-space);
+}
+
+header input,
+header input:focus,
+header input:focus-visible{
+  background-color: var(--gray);
+  border: none;
+  outline: none;
+  border-radius: 0.75rem;
+  height: 1.5rem;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+header > div:nth-child(2) {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: var(--double-space);
+  align-items: center;
+}
+
+header > div:nth-child(2) > div {
+  display: grid;
+}
+
+main {
+  grid-area: main;
+  padding: var(--simple-space);
+  display: grid;
+  grid-template-areas: 
+  "projects announcements"
+  "projects trending";
+  grid-template-columns: 1fr 15rem;
+  gap: var(--simple-space);
+  background-color: var(--gray);
+}
+
+.card svg {
+  width: var(--nav-size);
+  height: var(--nav-size);
+  margin: 1rem 1rem 0 0;
+}
+
+.projects {
+  display: grid;
+  grid-area: projects;
+  align-content: start;
+}
+
+.projects,
+.announcements,
+.trending {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.projects > span,
+.announcements > span,
+.trending > span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card span {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+}
+
+.announcements > div span {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.announcements p {
+  font-size: 0.7rem;
+  color: var(--dark-gray);
+}
+
+.cardboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-content: start;
+  gap: var(--double-space);
+}
+
+.announcements,
+.trending {
+  align-content: start;
+}
+
+.card,
+.announcements > div,
+.trending > div {
+  display: grid;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  padding: var(--simple-space);
+  align-items: start;
+  align-content: start;
+  justify-items: start;
+  box-shadow: 4px 4px 8px -8px;
+}
+
+.announcements > div > div:nth-child(2) {
+  margin: var(--simple-space) 0;
+  padding: var(--simple-space) 0;
+  border-top: 2px solid var(--gray);
+  border-bottom: 2px solid var(--gray);
+}
+
+.card {
+  border-left: 0.6rem solid var(--orange);
+  grid-template-rows: auto 1fr auto;
+  padding: var(--double-space) var(--simple-space);
+}
+
+.card > div {
+  justify-self: end;
+}
+
+.announcements div,
+.trending div {
+  display: grid;
+}
+
+.trending > div {
+  gap: var(--simple-space);
+}
+
+.trending > div > div {
+  grid-template-areas: 
+  "avatar ref"
+  "avatar phrase";
+  font-size: 0.8rem;
+  gap: 2px;
+}
+
+.trending > div > div > object {
+  grid-area: avatar;
+  height: 3rem;
+  width: 3rem;
+  justify-self: center;
+  margin-right: var(--simple-space);
+}
+
+.trending > div > div > span:first-of-type {
+  grid-area: ref;
+  justify-self: start;
+  align-self: end;
+}
+
+.trending > div > div > span:last-of-type {
+  grid-area: phrase;
+  justify-self: start;
+  color: var(--dark-gray);
+  align-self: start;
+}
+
+nav {
+  color: var(--white);
+  background-color: var(--blue);
+  padding: var(--simple-space);
+  font-weight: bold;
+  grid-area: nav;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-content: start;
+  justify-content: start;
+  align-items: center;
+  gap: var(--simple-space);
+}
+
+nav > span.dashboard {
+  font-size: calc(var(--nav-size)*1.5);
+}
+
+nav > span:not(.dashboard) {
+  font-size: var(--nav-size);
+}
+
+span.empty:before {
+  content: "\200D";
+  display:inline;
+}
+
+header > div:first-child > object {
+  height: 2rem;
+  width: 2rem;
+}
+
+header > div:first-child > div:last-child,
+header > div:last-child > div,
+header button {
+  font-weight: bold;
+}
+
+header button {
+  height: 2rem;
+  width: 5rem;
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 1rem;
+}
+
+button:hover,
+svg:hover,
+nav > span:hover,
+header > div > div:last-of-type:hover,
+.card > span:hover,
+.card > p:hover,
+.announcements > div span:hover,
+.announcements > div p:hover,
+.trending > div > div {
+  cursor: pointer;
+}
+
+header > div:first-child > div:last-child {
+  font-size: 0.9rem;
+}
+
+header > div:last-child > div > span:first-child {
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+header > div:last-child > object {
+  height: 3rem;
+  width: 3rem;
+}
+
+footer {
+  grid-area: footer;
+  padding: var(--simple-space);
+  background-color: var(--white);
+  display: grid;
+  justify-items: center;
+  box-shadow: 0 -10px 20px -20px;
+  position: relative;
+  z-index: 1;
+}
+
+footer > p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+footer a,
+footer a:visited {
+  color: inherit;
+}
